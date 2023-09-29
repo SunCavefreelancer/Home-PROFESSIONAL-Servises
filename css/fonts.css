@@ -1,0 +1,10 @@
+/* Підключення шрифтів вручну */
+@font-face {
+	font-family: '10175-fontps';
+	src:
+		url("..//fonts/10175-fontps.woff2") format("woff2"),
+		url("..//fonts/10175-fontps.woff") format("woff");
+	wont-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}

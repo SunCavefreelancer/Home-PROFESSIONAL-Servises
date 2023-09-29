@@ -1,0 +1,1403 @@
+/* ==============Підключення шрифтів============== */
+
+/*Google.fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:regular,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:regular,600,700&display=swap");
+
+
+/* =======Підключення шрифтів вручну======= */
+@import url("fonts.css");
+
+
+/*Обнуление*/
+*,*:before,:after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+li, ol, ul {
+    text-decoration: none;
+    letter-spacing: none;
+    list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+img {
+    vertical-align: top;
+}
+
+/* ------------------------------------------------------------------- */
+html,
+body {
+    height: 100%; /* прижимаем футер КНИЗУ */
+    line-height: 1;
+    font-size: 16px;
+    color: #000;
+	font-family: 'Inter', sans-serif;
+}
+/* ------------------------------------------------------------------- */
+
+/* -------------------------оболочка для демонстрации----------------- */
+.wrapper {
+    min-height: 100%;/* прижимаем футер КНИЗУ */
+    display: flex; /* прижимаем футер КНИЗУ */
+    flex-direction: column; /* прижимаем футер КНИЗУ */
+    overflow: hidden;
+}
+/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+.-conteiner { /* общий ограничиваюий контейнер */
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+.-ibg { /* для всех используемых ibg */
+    position: relative;
+}
+.-ibg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+
+
+/* -------------------------основные стили------------------------ */
+.conteiner { /* header ограничиваюий контейнер */
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+.header {
+    position: fixed; /* Наша ШАПКА - HEADER будет ФИКСИРОВАННОЙ, т.е.при скроле она всеглда будет сверху кнотента */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 250;/* делаем большой z-index ЧТОБЫ поверх контента была шапка*/
+}
+
+/* --------------------создаем ПЛАШКУ РОЗОВОГО ЦВЕТА----------------------*/
+.header:before {/* создаем ПЛАШКУ */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* т.е. на ВЕСЬ РАЗМЕР НАШЕЙ ШАПОЧКИ */
+    background-color: rgb(3, 29, 100);
+    z-index: 2;
+}
+
+.header-body { /* теперь нам нужно ВЫТАЩИТЬ ВЕСЬ КОНТЕНТ НАВЕРХ из под ШАПКИ */
+    position: relative;
+    /*z-index: 2;*/
+    height: 80px; /* ВЫСОТА ШАПКИ header */
+
+    /* теперь продолжаем работать с ШАПКОЙ, после того как в conteiner - ОГРАНИЧИЛИ по ШИРИНЕ КОНТЕНТ */
+    display: flex; /* ЗаДАЛИ flex что бы РАЗБРОСАТЬ по СТОРОНАМ лого и пункты меню */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    position: relative;
+    z-index: 2;
+    font-size: 30px;
+    font-family: '10175-fontps';
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-logo:hover {
+    cursor: pointer;
+    transition: 0.8s;
+}
+.span-fit { /*  задаем ЦВЕТ ИМЕННО  span */
+    color: #f3fbfd;
+}
+.header-logo a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #58ecff;
+    font-weight: 900;
+}
+/* ----img---- */
+.header-logo-img { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    flex: 0 0 40px; /* КАРТИНКА сама по размеру 200рх */
+    /*overflow: hidden;*/
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+    margin: 0px 20px 0px 0px;/* сдвинули картинку -лого вправо */
+}
+.header-logo-img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+    max-width: 100%;
+}
+
+/* -- */
+.hour-strvices {
+    font-size: 20px;
+    color: #fdf3fd;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+	font-family: '10175-fontps';
+
+    position: relative;
+    z-index: 5;
+}
+.hour-strvices::before {
+    content: url(img2/red-color.png);
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    font-size: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 5;
+}
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке самих ПУНКТОВ МЕНЮ---------------------------------- */
+.header-list {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.menu-header-link { /* все ссылки отступы */
+    list-style: none; /* убираем ТОЧКИ перед ПУНКАМИ МЕНЮ */
+    margin: 0px 0px 0px 20px; /* получилось */
+    text-transform: uppercase;
+    font-size: 20px; /* если сделать шрифт меньше, СКРОЛА не будет */
+
+    /* ---------------------------------------------------ДЕЛАЕМ интересное подчеркивание пунктов меню-------------------------------------- */
+    background: linear-gradient(rgb(0, 204, 255) 0 0) bottom/var(--t,0) 2px no-repeat;
+    transition: 0.5s; /* плавный переход-анимация */
+}
+    /* что бы заработало добавляем HOVER --t: */
+    .menu-header-link:hover {
+    --t: 100%;
+}
+
+.menu-header-link1 {  /* задаем всем ссылкам размер, шрифт, цвет */
+    font-size: 17px;
+    font-weight: 700;
+    color: #fdfbfb;
+    font-family: 'Poppins', sans-serif;
+    line-height: 150%;
+}
+.menu-header-link1:hover {
+    color: rgb(0, 132, 255);
+    transition: 0.7s;
+} 
+.link-vip { /* -------------------выделяем отдельно ссылку в меню -----------------  */
+    color: #58ecff;
+}
+.link-vip:hover {
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+
+ /* --------------------------------------------------переходим к верстке БУРГЕР-МЕНЮ--------------------------------- */
+.header-burger {
+    display: none;
+}
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке Медиа-Запрос для 767px-экранов---------------------------------- */
+
+/* будет выскакивать БУРГЕР-МЕНЮ при уменьшеении ЭКРАНОВ  */
+
+@media (max-width:992px) {
+    .header-logo {
+    font-size: 22px;
+}
+.menu-header-link1 {  /* задаем всем ссылкам размер, шрифт, цвет */
+    font-size: 15px;
+}
+
+}
+
+@media (max-width:767px) {
+    .header-body { /* уменьшаем ВЫСОТУ ШАПКИ header  */
+        height: 50px;
+    }
+    .header-logo { /* уменьшаем размер ЛОГО-фото */
+        flex: 0 0 40px;
+    }
+
+    /* это будет бургер меню */
+    .header-burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 3;
+    } 
+
+    /* --------------------------здесь мы РИСУЕМ ПОЛОСОЧКИ БУРГЕР */ /* общие настройки-------------------------- */
+    .header-burger:before,
+    .header-burger:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    /* --------------------------здесь мы РИСУЕМ Верхнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header-burger:before {
+        top: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ Нижнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header-burger:after {
+        bottom: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ СРЕДНЮЮ ПОЛОСУ БУРГЕР--------------------------- */
+    .header-burger span {
+        position: absolute;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    .header-burger.active:before {
+        transform: rotate(45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        top: 9px; /* теперь подняли ее на центр */
+    }
+    .header-burger.active:after {
+        transform: rotate(-45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        bottom: 9px; /* теперь подняли ее на центр */
+    }
+    .header-burger.active span {
+        transform: scale(0); /* убираем среднюю полосочку */
+    }
+    /* --------------------------здесь мы Закончили РИСОВАТЬ - БУРГЕ-------------------------- */
+
+
+
+    /* -----------------теперь стилизуем МЕНЮ----------------- */
+    .header-menu {
+        /* Делаем ПЛАСТИНУ которая будет ВЫЕЗЖАТЬ для пунктов меню */
+        position: fixed;
+        top: -100%; /* меню будет сьезжать сверху */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* будет скрол при повороте экрана телефона */
+        transition: all 0.3s ease 0s; /* теперь переходит плавно */    
+        background-color: #48a3ff; 
+        padding: 70px 10px 20px 10px; /* пункты меню вытащили из розовой плашки в РЯД */
+    }
+    .header-menu.active {
+        top: 0;
+    }
+
+    .header-list {
+        display: block; /* меню пункты встали в КОЛОНКУ */
+        text-align: center;
+    }
+    .header-list li { /* теперь сделали отступы между строчками меню в колонке */
+        margin: 0px 0px 30px 0px;
+    }
+
+    .header-list li {
+    font-size: 35px; /* сделали шрифт больше (с 20рх на 27рх), для СКРОЛА телефонов в горизонтальном положении!*/
+    }
+
+/* -- */
+
+    .link-vip { /* -------------------выделяем отдельно ссылку в меню -----------------  */
+        color: #fff;
+    }
+    .link-vip:hover {
+        color: blue;
+        cursor: pointer;
+        transition: 0.7s;
+    }
+
+/* -- */
+    .header-logo {
+        font-size: 18px;
+        margin-right: 20px;
+    }
+
+    .hour-strvices {
+        font-size: 12px;
+        text-align: end;
+        line-height: 120%;
+    }
+    .hour-strvices::before {
+        margin-left: 5px;
+    }
+
+}/* -----------------------------------------------закончили МЕДИА-ЗАПРОСЫ-------------------------------------------- */
+
+
+/* -------------------------------------------------------------------ПЕРЕХОДИМ К верстке КОНТЕНТА сайта-------------------------------------------------- */
+/* main */
+/*main {
+
+}*/
+
+.page { 
+    flex: 1 1 auto;/* прижимаем футер КНИЗУ */
+}
+
+/* ============================page-1-AFISHA============================= */
+.page-1-afisha {
+    padding: 180px 0px 80px 0px;
+    background-color: rgb(3, 29, 100);
+}
+@media (max-width:767px) {
+    .page-1-afisha {
+        padding: 130px 0px 80px 0px;
+    }
+}
+@media (max-width:460px) {
+    .page-1-afisha {
+        padding: 110px 0px 80px 0px;
+    }
+}
+
+.page-1-afisha-body {
+    display: flex;
+    margin: 0 -10px;
+}
+@media (max-width:680px) {
+    .page-1-afisha-body {
+        flex-direction: column;
+        }
+    }
+
+.page-1-afisha-left {
+    flex: 0 1 60%;
+    padding: 0 10px;
+}
+
+.page-1-afisha-left-text >*:not(:last-child) {
+    padding: 50px 0px 20px 0px;
+}
+.page-1-afisha-left-text {
+    padding: 0px 20px 0px 0px;
+}
+
+@media (max-width:1005px) {
+    .page-1-afisha-left-text{
+        margin: -50px 0 0 0;
+        }
+    }
+
+.page-1-afisha-left-title {
+    font-size: 55px;
+	font-family: 'Inter';
+	font-weight: 700;
+    color: #58d0ff;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+@media (max-width:992px) {
+	.page-1-afisha-left-title {
+        font-size: 40px;
+    }
+}
+@media (max-width:938px) {
+	.page-1-afisha-left-title {
+        font-size: 37px;
+    }
+}
+.span-professional {
+    color: #fff;
+    text-shadow: 2px solid #050505;
+	font-family: 'Inter';
+	font-weight: 700;
+}
+
+
+
+.page-1-afisha-left-subtitle {
+    line-height: 142%;
+	font-family: 'Poppins', sans-serif;
+    font-size: 20px;    
+    color: #fff;
+}
+@media (max-width:938px) {
+	.page-1-afisha-left-subtitle {
+        font-size: 17px;
+    }
+}
+@media (max-width:767px) {
+	.page-1-afisha-left-subtitle {
+        font-size: 16px;
+    }
+}
+
+
+.page-1-afisha-right {
+    flex: 0 1 40%;
+    padding: 0 10px;
+
+}
+@media (max-width:680px) {
+	.page-1-afisha-right{
+        flex: 0 1 100%;
+    }
+}
+
+
+.page-1-afisha-right-img {
+    display: flex;
+    justify-content: end;
+}
+
+@media (max-width:992px) {
+	.page-1-afisha-right-img-2 {
+        margin-left: 30px;
+}
+.page-1-afisha-right-img-3 {
+        margin-left: 30px;
+}
+.page-1-afisha-right-img {
+        justify-content: start;
+}
+    }
+	.page-1-afisha-right-img-1 {
+        margin-right: -100px;
+}
+.page-1-afisha-right-img-2 {
+        margin-right: -100px;
+}
+
+@media (max-width:902px) {
+	.page-1-afisha-right-img img {
+        width: 130px;
+        height: 212px;
+    }
+	.page-1-afisha-right-img-2 {
+        margin-left: 45px;
+}
+.page-1-afisha-right-img-3 {
+        margin-left: 45px;
+}
+    }
+
+
+/* ---------- --------------- ------------- -------------- -------------- ----------------- */
+
+.page-1-afisha-box-down {
+    padding: 80px 0px 0px 0px;
+}
+@media (max-width:620px) {
+    .page-1-afisha-body-down {
+        padding: 40px 0px 0px 0px;
+    }
+}
+
+.page-1-afisha-body-down-columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.page-1-afisha-body-down-column >*:not(:last-child) {
+    padding: 0px 0px 20px 0px;
+}
+.page-1-afisha-body-down-column {
+    flex: 0 1 20%;
+    padding: 0 10px;
+
+}
+
+/* --- */
+@media (max-width:1015px) {
+    .down-column {
+        flex: 0 1 33.333%;
+    }
+}
+@media (max-width:620px) {
+    .down-column {
+        flex: 0 1 50%;
+        padding: 0px 0px 10px 0px;
+    }
+}
+@media (max-width:480px) {
+    .down-column {
+        flex: 0 1 100%;
+        padding: 0px 0px 10px 0px;
+    }
+}
+/* --- */
+
+.page-1-afisha-body-down-column-4 {
+    flex: 0 1 40%;
+    padding: 0 10px;
+    /*border: 1px solid #f3fbfd;*/
+}
+@media (max-width:1015px) {
+	.page-1-afisha-body-down-column-4 {
+        flex: 0 1 100%;
+        padding:  30px 0 0px 0;
+    }
+}
+@media (max-width:620px) {
+	.page-1-afisha-body-down-column-4 {
+        padding:  10px 0 0px 0;
+    }
+}
+
+.page-1-afisha-body-down-column-list li::before {
+    content: url(img2/red-color.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 15px;
+
+    position: relative;
+    z-index: 3;
+}
+
+.page-1-afisha-body-down-column-link {
+    line-height: 165%;
+    color: #fff;
+    font-size: 18px;
+}
+@media (max-width:1105px) {
+	.page-1-afisha-body-down-column-link {
+        font-size: 16px;
+    }
+}
+@media (max-width:340px) {
+	.page-1-afisha-body-down-column-link {
+        font-size: 14px;
+    }
+}
+.page-1-afisha-body-down-column-link a{
+    color: inherit;
+    color: #58d0ff;
+    font-weight: 800;
+}
+.page-1-afisha-body-down-column-link a:hover {
+    color: #f8fdff;
+    cursor: pointer;
+    transition: 0.8s;
+    text-decoration: underline;
+}
+/* ================================page-1-AFISHA=============================== */
+
+
+
+
+
+
+
+
+/* ===================================page-2_PROFESSIONAL-WORK=======+++++=================================== */
+.page-2-decor {
+	padding: 70px 0px 50px 0px;
+}
+@media (max-width:550px){
+	.page-2-decor {
+		padding: 40px 0px 40px 0px;
+	}
+}
+
+h2 {
+	max-width: 750px;
+	font-size: 25px;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+	margin: 0 auto;
+	font-weight: 700;
+    color: #58d0ff;
+	line-height: 135%;
+	padding: 0px 0px 20px 0px;
+}
+@media (max-width:550px){
+	h2 {
+		font-size: 20px;
+		padding: 0px 0px 20px 0px;
+	}
+}
+@media (max-width:320px){
+	h2 {
+		font-size: 18px;
+		padding: 0px 0px 20px 0px;
+	}
+}
+
+.page-2-decor-columns {
+	padding: 50px 0px 0px 0px;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px;
+	padding: 0px 0px 50px 0px;
+}
+@media (max-width:767px){
+	.row {
+		padding: 0px 0px 0px 0px;
+	}
+}
+
+.page-2-decor-column >*:not(:last-child) {
+		padding: 10px 0px 15px 0px;
+}
+
+.page-2-decor-column {
+	flex: 0 1 50%;
+	padding: 0 15px;
+	border-top: 1px solid rgba(9,9,121,1);
+}
+
+@media (max-width:767px){
+	.page-2-decor-column {
+		flex: 0 1 100%;
+		padding: 0px 15px 50px 15px;
+	}
+}
+.page-2-decor-icon {
+	position: relative;
+}
+.page-2-decor-icon img{
+	position: absolute; 
+	top: -30px; 
+	left: 0; 
+
+	display: block;
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 9%, rgba(0,212,255,1) 100%);
+	padding: 10px;
+	border-radius: 40%;
+}
+
+.page-2-decor-title {
+	margin-top: 20px;
+	font-size: 20px;
+	color: #808080;
+	font-weight: 700;
+	font-family: 'Poppins', sans-serif;
+}
+
+.page-2-decor-subtitle {
+	font-size: 18px;
+	color: #585858;
+	line-height: 120%;
+	margin-bottom: 20px;
+	font-family: 'Inter', sans-serif;
+}
+
+
+
+/* ===============================================sliderFON================================================ */
+
+
+.page3-slide {
+    margin: -20px 0px 30px 0px;
+	position: relative;
+	z-index: 1;
+}
+@media (max-width:992px){
+	.page3-slide {
+		margin: -80px 0px 0px 0px;
+	}
+}
+@media (max-width:767px){
+	.page3-slide {
+		margin: -70px 0px 0px 0px;
+	}
+}
+@media (max-width:320px){
+	.page3-slide {
+		margin: -50px 0px 0px 0px;
+	}
+}
+
+.sliderbig-item img {
+    max-width: 100%;
+}
+@media (max-width:767px) { 
+}
+
+/* -------------------------------------------------------------------------- */
+/* Ограничивающая оболочка */
+.slick-list { /* что бы не выглядывал край соседней фотографии СБОКУ */
+    overflow: hidden;
+}
+/* --------------------------------------------------------------------------- */
+ 
+/* Лента слайдов */ /* что бы все фото выстроились в РЯД */
+.slick-track{
+    display: flex;
+} /* 1). уже работает СЛАЙДЕР, можно листать картинки */
+/* ---------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------- */
+/* Стилизуем кнопки - точки */
+/* Точки (булиты) */
+.sliderbig .slick-dots{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sliderbig .slick-dots li{ /* растояние между кнопками-булитами */
+    list-style: none;
+    margin: 0px 10px;
+}
+.sliderbig .slick-dots button{
+    font-size: 0;
+    width: 15px; /* размер кнопки */
+    height: 15px; /* размер кнопки */
+    background-color: rgb(249, 248, 255);
+    border-radius: 50%; /* круглые кнопки */
+}
+.sliderbig .slick-dots li.slick-active button { /* делаем активную кнопку прозрачной */
+    background-color: transparent;
+    border: 2px solid #f5de14;
+}
+
+/* Здесь мы стилизуем для -КОНКРЕТНОГО СЛАДЙА- кнопки */
+
+/* Стрелка */  
+
+/* Стрелка ВЛЕВО*/ 
+
+/* Стрелка ВПРАВО*/ 
+
+/* --------------------------------------------------------------------------- */
+.sliderbig-item {
+    text-align: center;/* поставили ПО ЦЕНТРУ картинки */
+}
+/* тогда здесь пишем 1 фото будет не прозрачным */ /* и в js пишем: centerMode:true
+.sliderbig__item.slick-center {
+}*/
+
+/* ==============================================sliderFON================================================= */
+
+
+
+
+/* ================================page3-advantages===================================== */
+.page3-advantages {
+	padding: 60px 0px 60px 0px;
+    background-color: rgb(3, 29, 100);
+}
+@media (max-width:320px){
+	.page3-advantages {
+		padding: 40px 0px 60px 0px;
+	}
+}
+
+h3 {
+	font-family: 'Poppins', sans-serif;
+	font-size: 35px;
+	text-align: center;
+	color: #fdf3fd;
+	margin-bottom: 30px;
+}
+@media (max-width:600px){
+	h3 {
+		font-size: 30px;
+	}
+}
+@media (max-width:320px){
+	h3 {
+		font-size: 25px;
+	}
+}
+.page3-advantages-columns {
+	padding: 20px 0px 0px 0px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -20px;
+}
+
+.page3-advantages-column {
+	flex: 0 1 25%;
+	padding: 0px 20px;
+}
+@media (max-width:992px){
+	.page3-advantages-column {
+		flex: 0 1 50%;
+		padding: 0px 20px 30px 20px;
+	}
+}
+@media (max-width:767px){
+	.page3-advantages-column {
+		flex: 0 1 100%;
+		padding: 0px 20px 30px 20px;
+	}
+}
+/* -- */
+.page3-advantages-column-img {
+	position: reletive; 
+	padding: 0px 0px 60% 0px; 
+}
+.page3-advantages-column-img img {
+	position: absolute; 
+	width: 100%; 
+	height: 100%; 
+	top: 0; 
+	left: 0; 
+}
+.page3-advantages-column-img img:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+	transition: 0.8s;
+}
+/* -- */
+
+.page3-advantages-column-text >*:not(:last-child) {
+	padding: 10px 0px 10px 0px;
+}
+
+.page3-advantages-column-title {
+	font-size: 20px;
+	font-weight: 700;
+	color: #ffffff;
+	font-family: 'Poppins', sans-serif;
+}
+@media (max-width:767px){
+	.page3-advantages-column-title {
+		font-size: 18px;
+	}
+}
+.page3-advantages-column-subtitle {
+	font-size: 18px;
+	color: #ffffff;
+	line-height: 130%;
+	font-family: 'Poppins', sans-serif;
+}
+@media (max-width767:px){
+	.page3-advantages-column-subtitle {
+		font-size: 16px;
+	}
+}
+
+.page3-advantages-column-price {
+	font-size: 20px;
+	font-weight: 900;
+	color: crimson;
+}
+
+.page3-advantages-column-button {
+	margin: 20px 0px 0px 0px;
+	display: inline-block;
+	font-size: 20px;
+	background-color: #48a3ff;
+	padding: 7px 25px;
+	text-align: center;
+	color: inherit;
+	color: #ffffff;
+	font-weight: 900;
+}
+.page3-advantages-column-button:hover {
+	background-color: #ffffff;
+	color: #48a3ff;
+	transition: 0.8s;
+	cursor: pointer;
+}
+@media (max-width:1120px){
+	.page3-advantages-column-button {
+		font-size: 18px;
+		padding: 5px 20px;
+
+	}
+}
+/* ===================================page3-advantages========================================== */
+
+
+
+/* ===================================page5-interier====================================== */
+.page5-interier {
+	padding: 80px 0px 80px 0px;
+}
+
+.page5-interier-text {
+	text-align: center;
+	font-size: 20px;
+	line-height: 135%;
+	margin-bottom: 20px;
+	font-family: 'Inter', sans-serif;
+	max-width: 800px;
+	margin: 0 auto;
+	color: #808080;
+}
+@media (max-width:1370px) {
+	.page5-interier-text{
+		margin-bottom: 20px;
+	}
+}
+@media (max-width:767px) {
+	.page5-interier-text{
+		margin-bottom: 20px;
+		font-size: 18px;
+	}
+}
+@media (max-width:500px) {
+	.page5-interier-text{
+		margin-bottom: 20px;
+		font-size: 16px;
+	}
+}
+
+.page5-interier-row {
+	padding: 30px 0px 30px 0px;
+}
+@media (max-width:1370px) {
+	.page5-interier-row {
+		padding: 0px 0px 0px 0px;
+	}
+}
+.page5-interier-columns {
+	display: flex;
+	margin: 0 -10px;
+	flex-wrap: wrap;
+}
+.page5-interier-column {
+	display: flex;
+	flex: 0 50%;
+	padding: 0px 10px;
+}
+@media (max-width:1370px){
+	.page5-interier-column {
+		display: flex;
+		flex: 0 100%;
+		padding: 0px 10px 10px 10px;
+	}
+}
+@media (max-width:710px){
+	.page5-interier-column {
+		flex-direction: column;
+		flex: 0 100%;
+		padding: 0px 10px 10px 10px;
+	}
+}
+
+.page5-interier-column-text >*:not(:last-child){
+	padding: 0px 0px 15px 0px;
+}
+.page5-interier-column-text {
+	padding: 40px;
+	border:1px solid  rgba(150, 150, 150, 0.364);
+	font-family: 'Poppins';
+}
+@media (max-width:650px){
+	.page5-interier-column-text {
+		padding: 20px;
+	}
+}
+@media (max-width:470px){
+	.page5-interier-column-text {
+		padding: 10px;
+	}
+}
+.page5-interier-column-title {
+	text-transform: uppercase;
+	color: #808080;
+	letter-spacing: 2px;
+	font-size: 20px;
+	text-align: center;
+	font-weight: 800;
+}
+@media (max-width:470px){
+	.page5-interier-column-title {
+		font-size: 17px;
+	}
+}
+.page5-interier-column-sub-title {
+	font-size: 16px;
+	color: #585858;
+	line-height: 130%;
+}
+/* --- */
+.page5-interier-column-img {
+	position: relative; 
+	padding: 0px 40% 0px  0px;
+}
+.page5-interier-column-img img{
+	position: absolute; 
+	width: 100%; 
+	height: 100%; 
+	top: 0; 
+	left: 0; 
+}
+@media (max-width:710px){
+	.page5-interier-column-img {
+		position: relative; 
+		padding: 0px  0px 40% 0px;
+	}
+}
+/* --- */
+
+
+
+/* ====================page-6-team========================== */
+.page6-team {
+	padding: 0px 0px 50px 0px;	
+
+}
+@media (max-width:767px){
+	.page6-team {
+		padding: 0px 0px 40px 0px;		
+	}
+}
+.page6-team  {
+	position: relative; 
+    z-index: 1;	
+}
+.page6-team-item {
+    background-color: rgb(3, 29, 100);
+	position: absolute; 
+	width: 100%;
+	height: 170px;
+	top: 130px; 
+	left: 0; 
+}
+.-page6-team-column-down {
+	margin-top: 90px;
+}
+@media (max-width:992px){
+	.-page6-team-column-down {
+		margin-top: 70px;
+	}
+}
+@media (max-width:767px){
+	.-page6-team-column-down {
+		margin-top: 0px;
+	}
+}
+.page6-team-columns {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+
+}
+.page6-team-column {
+	flex: 0 1 25%;
+	padding: 0px 10px;	
+	z-index: 2;
+}
+@media (max-width:992px){
+	.page6-team-column {
+		flex: 0 50%;
+		padding: 0px 10px 30px 10px;
+	}
+}
+@media (max-width:767px){
+	.page6-team-column {
+		flex: 0 100%;
+		padding: 0px 10px 30px 10px;
+	}
+}
+.page6-team-column-img {
+	position: relative;
+	padding: 0px 0px 70% 0px;
+	margin-bottom: 25px;	
+	border-left: 7px solid  rgb(2, 126, 249);
+	border-top: 2px solid rgb(2, 126, 249);
+	border-radius: 50px;
+	box-shadow: 0 5px 10px rgb(2, 126, 249);
+}
+.page6-team-column-img img{
+	position: absolute; 
+	width: 100%; 
+	height: 100%; 
+	top: 9px; 
+	left: 5px; 
+	border-radius: 50px;
+}
+.page6-team-column-text >*:not(:last-child){
+	padding: 0px 0px 20px 0px;
+}
+.page6-team-column-text h2 {
+	text-shadow: 1px 0px 0px #e1dfe1;
+}
+.page6-team-column-text p {
+	font-size: 23px;
+	font-family: 'Poppins';
+	font-weight: 700;
+	color: #808080;
+	text-align: center;
+}
+.page6-team-column-icon {
+	text-align: center;
+	margin-top: 20px;
+}
+.icon1, .icon2 {
+	padding-right: 10px;
+}
+.page6-team-column-icon img:hover {
+	transition: 0.8s;
+	cursor: pointer;
+	rotate: -360deg;
+	opacity: 0.5;
+}
+
+/* =======================footer======================== */
+.footer {
+	color: #f3fbfd;
+	padding: 80px 0px 0px 0px;
+	min-height: 300px;
+    background-color: rgb(3, 29, 100);
+}
+
+.footer-columns {
+	display: flex;
+	margin: 0 -10px;
+	flex-wrap: wrap;
+}
+
+.footer-column {
+	flex: 0 1 25%;
+	padding: 0px 10px;
+	display: flex;
+	justify-content: center;
+}
+@media (max-width:1260px){
+	.footer-column {
+		flex: 0 1 50%;
+		padding: 0px 10px 40px 10px;
+	}
+}
+@media (max-width:767px){
+	.footer-column {
+		flex: 0 1 100%;
+		padding: 0px 10px 40px 10px;
+	}
+}
+/* -- */
+.-Creative {
+	text-transform: uppercase;
+	font-weight: 800;
+}
+.-Creative span {
+	color: #f7f9fa;
+}
+
+.footer-column-text >*:not(:last-child) {
+	padding: 0px 0px 20px 0px;
+}
+.footer-column-text {
+	text-align: center;
+}
+.footer-column-title {
+	color: rgb(87, 193, 255);
+	font-weight: 700;
+	font-family: 'Inter';
+	font-size: 22px;	
+}
+
+.footer-column-sub-title {
+	font-weight: 700;
+	font-family: 'Inter';
+	font-size: 20px;
+}
+
+.footer-column-img img{
+	width: 40px;
+}
+.footer-column-img img:hover {
+	transition: 0.8s;
+	cursor: pointer;
+	rotate: -360deg;
+}
+
+
+/* ===================================page7-development========================= */
+.page7-development {
+	padding: 80px 0px 80px 0px;
+	background-color: rgb(2, 126, 249);
+}
+.page7-development-conteiner h2 {
+	color:rgb(3, 29, 100);
+}
+.page7-development-text {
+	text-align: center;
+	color: #fef9f9;
+	font-size: 20px;
+	max-width: 750px;
+	margin: 0 auto;
+	line-height: 135%;
+	margin-bottom: 70px;
+
+}
+
+.page7-development-row {
+	padding: 0px 0px 0px 0px;
+}
+.page7-development-columns {
+	display: flex;
+	margin: 0 -20px;
+	flex-wrap: wrap;
+}
+.page7-development-column {
+	flex: 0 1 20%;
+	padding: 0px 20px;
+}
+@media (max-width:1250px){
+	.page7-development-column {
+		flex: 0 1 33.333%;
+		padding: 0px 20px 20px 20px;
+	}
+}
+@media (max-width:992px){
+	.page7-development-column {
+		flex: 0 1 50%;
+		padding: 0px 20px 20px 20px;
+	}
+}
+@media (max-width:500px){
+	.page7-development-column {
+		flex: 0 1 100%;
+		justify-content: center;
+		padding: 0px 20px 20px 20px;
+	}
+}
+.page7-development-column h2 {
+	text-align: left;
+	color: rgb(3, 29, 100);
+}
+@media (max-width:500px){
+	.page7-development-column h2 {
+		text-align: center;
+	}
+}
+
+.page7-development-link {
+	font-size: 20px;
+	font-family: 'Poppins';
+	color: #fef9f9;
+	padding: 0px 0px 20px 0px;
+}
+@media (max-width:500px){
+	.page7-development-link {
+      text-align: center;
+	}
+}
+
+
+/* ============================page8-help=============================== */
+.page8-help {
+	padding: 80px 0px 80px 0px;
+}
+
+.page8-help-box {
+	display: flex;
+	margin: 0 -20px;
+	margin: 0 auto;
+}
+@media (max-width:992px){
+	.page8-help-box {
+		flex-wrap: wrap;
+	}
+}
+.page8-help-box-left {
+    margin: 0 auto;
+	max-width: 500px;
+	background-color: rgb(2, 126, 249);
+	display: flex;
+	justify-content: center;
+	padding: 0px 20px;
+	flex: 0 50%;
+}
+@media (max-width:767px){
+	.page8-help-box-left {
+		padding: 0px 20px 0px 20px;
+		flex: 0 100%;
+		max-width: 850px;
+	}
+}
+.page8-help-box-left p {
+		color: rgb(3, 29, 100);
+		padding: 50px;
+		line-height: 140%;
+		color: #f3fbfd;
+		font-size: 20px;
+}
+@media (max-width:450px){
+	.page8-help-box-left p {
+		color: rgb(3, 29, 100);
+		padding: 30px;
+}
+}
+.page8-help-box-right {
+    margin: 0 auto;
+	max-width: 600px;
+	color: rgb(3, 29, 100);
+
+	padding: 0px 20px;
+	flex: 0 50%;
+}
+@media (max-width:992px){
+	.page8-help-box-right {
+		margin-top: 30px;
+	}
+}
+@media (max-width:767px){
+	.page8-help-box-right {
+		padding: 0px 20px;
+		flex: 0 100%;
+		margin-top: 30px;
+	}
+}
+.page8-help-box-right-title {
+	font-size: 50px;
+	color: #000;
+
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+@media (max-width:992px){
+	.page8-help-box-right-title {
+		font-size: 40px;
+	}
+}
+@media (max-width:767px){
+	.page8-help-box-right-title {
+		font-size: 30px;
+	}
+}
+@media (max-width:540px){
+	.page8-help-box-right-title {
+		font-size: 25px;
+	}
+}
+.page8-help-box-right-title::after {
+	content: '_________';
+	color: #48a3ff;
+
+}
+.page8-help-box-right-sub-title {
+	font-size: 20px;
+	color: #404141;
+	line-height: 140%;
+}
+@media (max-width:767px){
+	.page8-help-box-right-sub-title {
+		font-size: 18px;
+		color: #404141;
+		line-height: 140%;
+	}
+}
