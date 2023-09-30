@@ -1307,6 +1307,7 @@ h3 {
 	display: flex;
 	margin: 0 -20px;
 	margin: 0 auto;
+	z-index: 1;
 }
 @media (max-width:992px){
 	.page8-help-box {
@@ -1335,13 +1336,27 @@ h3 {
 		line-height: 140%;
 		color: #f3fbfd;
 		font-size: 20px;
+		z-index: 3;
 }
 @media (max-width:450px){
 	.page8-help-box-left p {
 		color: rgb(3, 29, 100);
 		padding: 30px;
+		color: #f3fbfd;
 }
 }
+/* -- */
+.page8-help-box-icon {
+	position: relative; 	
+	z-index: 2;
+}
+.page8-help-box-icon img{
+	width: 70px;	
+	position: absolute; 
+	top: 20px; 
+	left: 20px; 
+}
+/* ---- */
 .page8-help-box-right {
     margin: 0 auto;
 	max-width: 600px;
@@ -1362,10 +1377,10 @@ h3 {
 		margin-top: 30px;
 	}
 }
+
 .page8-help-box-right-title {
 	font-size: 50px;
 	color: #000;
-
 	font-weight: 800;
 	margin-bottom: 20px;
 }
@@ -1384,10 +1399,8 @@ h3 {
 		font-size: 25px;
 	}
 }
-.page8-help-box-right-title::after {
-	content: '_________';
-	color: #48a3ff;
-
+.page8-help-box-right-line img{
+	width: 10%;
 }
 .page8-help-box-right-sub-title {
 	font-size: 20px;
